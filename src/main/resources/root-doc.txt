@@ -1,0 +1,10 @@
+=S3 Market Models=
+<h3>Problem</h3>
+We would like to be able to understand market opportunities while they are still
+opportunities and can still be taken advantage of. The issue is that there are
+so many possibilities to test that it can take longer to find the opportunities
+than the opportunities last. We'd like to develop different ways to look at
+opportunities, so that if an opportunity looks good from multiple angles, it's
+likely to be better than an opportunity that only looks good when you look at 
+it in a certain way.
+

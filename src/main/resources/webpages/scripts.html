@@ -1,0 +1,53 @@
+<html>
+   <head>
+   </head>
+   <body>
+      <img src="../graphics/S3Logo.png"><p>
+      <hr>
+      <h2>Project Specific SBT Scripts</h2>
+      There are some SBT scripts provided in the <code>scripts/</code> directory 
+      for some common tasks. These scripts can be run from the command line by 
+      simply piping them to SBT from the project's root directory. For instance:
+      
+      <blockquote>
+         sbt < scripts/HelloWorld.script
+      </blockquote>
+      
+      The intent is that these scripts be exceedingly simple. The available 
+      scripts include:
+      <p>
+      
+      <ol>
+         <li>
+            <b>HelloWorld.script</b> : A script to run a "Hello World!"
+            program. Useful to verify that the Scala ecosystem is working. It
+            should print out something like: <p>
+            <blockquote>
+              scala> val res0: String = Hello World from Scala and SBT!
+            </blockquote>
+            <p>
+            This script has essentially no dependencies and doesn't compile any 
+            of our program code. So if Scala and SBT are setup and nothing else, 
+            it should work. If it doesn't work, there is a basic configuration 
+            management problem.<p>
+         </li>
+         
+         <li>
+            <b>HelloWorldTest.script</b> : A script to run a single unit test
+            that simply calls the "Hello World!" program. This program should
+            work if Scala, SBT, and ScalaTest are working together. So it's 
+            basically a test to verify that ScalaTest is configured properly
+            within SBT. The single test should pass.<p>
+         </li>
+         
+         <li>
+            <b>MakeWebsite.script</b> : A script to generate all of the HTML
+            files that go into the website describing this product, its code,
+            its tests, and other product resources.<p>
+         </li>
+      </ol>
+
+      <a href="index.html">Main project page</a>
+   </body>
+</html>
+

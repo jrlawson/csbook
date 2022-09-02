@@ -1,0 +1,41 @@
+*.class
+*.log
+
+# sbt specific
+.cache
+.history
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+test.log
+project/*
+bin/*
+target/*
+.classpath
+.settings/*
+.project
+
+.cache-main
+.cache-tests
+
+# BerkeleyDB Java specific
+bdb/*
+!/**/.gitkeep
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+/bin/
+
+# IntelliJ specific
+.idea/
+
+# Emacs-style backups
+*~
+
+# ID Service specific
+idsvc.log

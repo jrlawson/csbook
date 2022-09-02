@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Model</title>
+</head>
+<body>
+<img src="../../graphics/S3Logo.png"><p>
+<h2>Test Model</h2>
+We divide the tests into 4 categories
+<ul>
+    <li>
+        <em>Benchmark Tests:</em> These are used for measuring performance. Sometimes a piece of functionality meets
+        its behavior specification, but isn't useful because it doesn't meet the time requirements. The benchmark tests
+        are designed to maintain an awareness of how well the code meets its time performance requirements.
+    </li>
+    <li>
+        <em>Compliance Tests:</em> These are used to assure that the functionality meets established guidelines for
+        the specific kind of functionality. For instance, that timezones are used as expected in industry norms.
+    </li>
+    <li>
+        <em>Unit Tests:</em> These are the tests developers typically think of as tests. They test small units of code
+        to determine if those units meet their specification. Substantial reports are produced every time the unit
+        tests are run. These reports capture the number of tests run, how many passed and failed, how many were
+        excluded, and also how much of the code was actually exercised by those tests. This is known as "test coverage".
+    </li>
+    <li>
+        <em>Integration Tests:</em> These tests integrate a number of units into larger assemblies and are generally
+        not run every time code is checked in. These can be quite large, and are typically done with manual
+        intervention, and may at times be run only when the product is deployed.
+    </li>
+</ul>
+<p>
+The directory structure of the actual test code follows these categories, and the documentation of the test code
+provides more detailed information.<p>
+
+We also run a series of "lint"-like tests to catch common errors that could result in poor maintainability, or 
+unchecked errors that unit tests do not capture.
+<p>
+<p>
+    Back to <a href="../index.html">main project page.</a>
+</body>
+</html>

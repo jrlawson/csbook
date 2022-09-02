@@ -1,0 +1,2 @@
+testOnly com.s3datascience.test.unittests.sample.HelloWorldTest
+exit
