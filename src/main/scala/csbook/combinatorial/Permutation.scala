@@ -66,6 +66,7 @@ trait Permutation {
     }
     builder.result
   }
+  def apply(i: Int): Int = valueAt(i)
 }
 
 /** Abstract permutation class using fixed sized arrays as the underlying data
@@ -173,19 +174,13 @@ object LexicalOrderPermutation {
   }
 }
 
-
-trait Perm2 {
-  def n: Int
-  def valueAt(i: Int): Int
-}
-
 object Perm2 {
   def main(args: Array[String]) : Unit = {
     LexicalOrderPermutation(5) match {
       case Some(p) =>
         println(p.n)
         println(p.valueAt(-2))
-        println(p.valueAt(p.n - 1))
+        println(p(p.n - 1))
         println(p.valueAt(p.n))
         //println(p.findPivotPosition)
         //println(p.findPivotSwapPosition(p.findPivotPosition))
@@ -198,20 +193,7 @@ object Perm2 {
             case _ =>
           }
         }
+      case None => ;
     }
   }
-}
-case class Perm2Base(n:Int) extends Perm2 {
-  def valueAt(i: Int): Int = i match {
-    case j if j<0  => -1
-    case j if j>=n => -1
-    case _    => i
-  }
-  def next = new Perm2Child(this)
-}
-
-class Perm2Child(predecessor: Perm2) extends Perm2 {
-  def n: Int = predecessor.n
-  def valueAt(i: Int): Int = predecessor.valueAt(i)
-
 }
