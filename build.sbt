@@ -32,7 +32,7 @@ ThisBuild / organization := "com.s3datascience"
 ThisBuild / scalaVersion := "2.13.3"
 ThisBuild / version      := "0.1.0-SNAPSHOT"
 
-scapegoatVersion in ThisBuild := "1.4.5"
+//scapegoatVersion in ThisBuild := "1.4.9"
 
 ///////////////////////////////////////////////////////////////////////////////
 //
