@@ -29,9 +29,14 @@ trait Permutation {
     * @return The value of the integer at the ith position in the permutation.
     */
   final def valueAt(i: Int): Int = {
-    if (i<0) Int.MinValue
-    else if (i<n) permValue(i)
-    else Int.MaxValue
+    if (i<0) {
+      Int.MinValue
+    } else if (i<n) {
+      permValue(i)
+    }
+    else {
+      Int.MaxValue
+    }
   }
 
   /** Determines the value of the permutation element at index i, between 0 and
@@ -64,7 +69,7 @@ trait Permutation {
       builder.append(valueAt(i))
       if (i<n-1) builder.append(" ")
     }
-    builder.result
+    builder.result()
   }
   def apply(i: Int): Int = valueAt(i)
 }
@@ -84,10 +89,15 @@ abstract class FixedArrayPermutation protected (vals: Array[Int]) extends Permut
   override def permValue(i: Int): Int = values(i)
 }
 
+abstract class CorruptableFixedArrayPermutation protected (vals: Array[Int])
+  extends FixedArrayPermutation(vals) {
+  def corruptIndex(i: Int, v: Int): Unit = vals(i) = v
+}
+
 /** A class for lexicographically ordered permutations. Instances of this class
   * are immutable.
   *
-  * Note that the constructor is private to insure that it can't be abused.
+  * Note that the constructor is private to ensure that it can't be abused.
   * The input to the constructor must be a permutation, and so we control
   * construction through the companion object, which can call the private
   * constructor, but never does so except with a well-formed permutation.
@@ -109,16 +119,16 @@ class LexicalOrderPermutation private (vals: Array[Int])
     // its right.
     def findPivotPosition: Int = {
       var testVal = n-2
-      while (valueAt(testVal)>valueAt(testVal+1)) testVal=testVal-1
+      while (valueAt(testVal) > valueAt(testVal + 1)) testVal = testVal - 1
       testVal
     }
     // The pivot swap position is the position of the smallest value in the
     // post pivot that is greater than the pivot value.
     def findPivotSwapPosition(pivotPoint: Int): Int = {
-      val pivotValue: Int = values(pivotPoint)
+      val pivotValue: Int = valueAt(pivotPoint)
       var valueOfSmallestElement: Int = Int.MaxValue
       var indexOfSmallestElement: Int = Int.MinValue
-      for (j <- pivotPoint+1 until n) {
+      for (j <- pivotPoint + 1 until n) {
         if (valueAt(j) < valueOfSmallestElement && valueAt(j) > pivotValue) {
           valueOfSmallestElement = valueAt(j)
           indexOfSmallestElement = j
@@ -131,8 +141,8 @@ class LexicalOrderPermutation private (vals: Array[Int])
       // Find the pivot swap position.
       val pivotSwapPosition = findPivotSwapPosition(pivotPosition)
       // Swap the values in the pivot position and the pivot swap position.
-      vals(pivotPosition) = values(pivotSwapPosition)
-      vals(pivotSwapPosition) = values(pivotPosition)
+      vals(pivotPosition) = valueAt(pivotSwapPosition)
+      vals(pivotSwapPosition) = valueAt(pivotPosition)
       vals
     }
     def reversePostPivot(pivotPosition: Int, vals: Array[Int]): Array[Int] = {
@@ -168,9 +178,9 @@ object LexicalOrderPermutation {
     * @return The first permutation, in lexicographic order, of the first n
     *         integers.
     */
-  def apply(n: Int): Option[LexicalOrderPermutation] = {
-    if (n>0) Some (new LexicalOrderPermutation((0 until n).toArray))
-    else None
+  def apply(n: Int): Option[LexicalOrderPermutation] = n match {
+    case n if n>0 => Some (new LexicalOrderPermutation((0 until n).toArray))
+    case _        => None
   }
 }
 
